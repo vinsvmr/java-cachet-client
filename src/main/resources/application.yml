@@ -1,0 +1,83 @@
+server:
+  port: 8091
+
+app:
+  version: 1.0
+
+  debug:
+    enableRestTemplate: true
+
+
+# set generic logging level
+logging.level.org.springframework: INFO
+# set security logging level
+logging.level.org.springframework.security: INFO
+
+scheduler:
+  monitor:
+    enabled: true
+    cron: 0 0/1 * * * ?
+#logging.level.*: DEBUG
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: DEBUG
+#          client: DEBUG
+#
+#logging.level.org.springframework.web: DEBUG
+#logging.level.org.hibernate: ERROR
+
+cachet:
+  setting:
+    apiUrl: your_api_cachet_url
+    apiToken: your_api_token
+
+api-monitor:
+  api-monitor:
+    -
+      enabled: true
+      name:  Dashboard
+      url: http://localhost:8080/health
+      method: GET
+      componentId: 3
+      expectedStatusCode: 200
+      title: Issue detected with the  Dashboard
+      message: We have detected issues with the Dataear Dashboard. We are currently working toward rectifying this issue and normal service will resume in due course.
+    -
+      enabled: true
+      name: Sevice Api
+      url: http://localhost:8082/health
+      method: GET
+      componentId: 1
+      expectedStatusCode: 200
+      title: Issue detected with the  Connector
+      message: We have detected issues with the  API services. We are currently working toward rectifying this issue.
+    -
+      enabled: true
+      name: QBO Api
+      url: http://localhost:8082/health
+      method: GET
+      componentId: 2
+      expectedStatusCode: 200
+      title: Issue detected with the Connector
+      message: We have detected issues with the Online API services. We are currently working toward rectifying this issue.
+    -
+      enabled: false
+      name: Helpdesk
+      url: help_rul
+      method: GET
+      componentId: 5
+      expectedStatusCode: 200
+      title: Issue detected with the Helpdesk
+      message: Issue detected with the Helpdesk
+    -
+      enabled: false
+      name:  Api
+      url: http://localhost:8081/health
+      method: GET
+      componentId: 4
+      expectedStatusCode: 200
+      title: Issue detected with the Api
+      message: We have detected issues with the Online API services. We are currently working toward rectifying this issue.
+

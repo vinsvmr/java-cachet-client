@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: java-cachet-client
+  jackson:
+    serialization:
+      indent_output: true
+#  cloud:
+#    config:
+#      uri: ${SPRING_CONFIG_URI:http://localhost:8888}
+#      fail-fast: true
+#      username: admin
+#      # to specify env var you could use '${CONFIG_SERVICE_PASSWORD}'
+#      password: 123456
+#---
+#spring:
+#  profiles: docker
+#  cloud:
+#    config:
+#      uri: http://config-server:8888
